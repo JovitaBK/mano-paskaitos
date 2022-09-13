@@ -1,0 +1,62 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <vector>
+#include <stdio.h>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::setprecision;
+using std::streamsize;
+using std::string;
+using std::vector;
+
+struct studentas {// studento struktura, kuri susideda is sekenciu elementu:
+    string vardas;
+    string pavarde;
+    int egzamino_pazimys;
+    double galutinis_rezultatas;
+};
+
+
+
+int main()
+    {
+    studentas temp;
+    vector<int> studento_pazymiai;// sukuriamas vektorius; cia jis dar tuscias
+    int pazymiai;
+    char atsakymas;
+    
+    int suma = 0;
+   
+
+    cout << "Iveskite varda: ";
+    cin >> temp.vardas;
+    cout << "Iveskite pavarde: ";
+    cin >> temp.pavarde;
+    cout << "Iveskite egzaminu pazymi: ";
+    cin >> temp.egzamino_pazimys;
+
+    cout << "Ar turit pazymiu uz namu darbus (y/n)? ";
+    cin >> atsakymas;
+
+    while (atsakymas == 'y' || atsakymas == 'Y')//pasitikrinu ar turi pazymiu
+    {
+        cout << "Iveskite pazymi: ";
+        cin >> pazymiai;
+
+        studento_pazymiai.push_back(pazymiai);// sukeliam duomenis(pazymius)i vektoriu
+        
+
+        cout << "Ar turite daugiau pazymiu uz namu darbus (y/n)? ";
+        cin >> atsakymas;
+
+    }
+    temp.galutinis_rezultatas = 0.4 * double(suma) / double(pazymiai) + 0.6 * temp.egzamino_pazimys;
+    printf("%10s %10s %5s\n", "Vardas\t", "Pavarde\t", "Galutinis rezultatas");
+    printf("%10s %15s %20lf\n", temp.vardas.c_str(), temp.pavarde.c_str(), temp.galutinis_rezultatas);
+    
+    return 0;
+    
+}
+    
